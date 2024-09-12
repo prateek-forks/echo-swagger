@@ -17,6 +17,7 @@ type Config struct {
 	// The url pointing to API definition (normally swagger.json or swagger.yaml). Default is `mockedSwag.json`.
 	URLs                 []string
 	DocExpansion         string
+	CustomCSS         string
 	DomID                string
 	InstanceName         string
 	DeepLinking          bool
@@ -100,6 +101,7 @@ func newConfig(configFns ...func(*Config)) *Config {
 	config := Config{
 		URLs:                 []string{"doc.json", "doc.yaml"},
 		DocExpansion:         "list",
+		CustomCSS:            "", // "/static/assets/swagger-custom", .css extension added automatically
 		DomID:                "swagger-ui",
 		InstanceName:         "swagger",
 		DeepLinking:          true,
@@ -203,6 +205,9 @@ const indexTemplate = `<!-- HTML for static distribution bundle build -->
   <meta charset="UTF-8">
   <title>Swagger UI</title>
   <link rel="stylesheet" type="text/css" href="./swagger-ui.css" >
+  {% if .CustomCSS|length > 1 %}
+  <link rel="stylesheet" type="text/css" href="{{.CustomCSS}}.css" >
+  {% endif %}
   <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
   <style>
