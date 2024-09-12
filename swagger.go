@@ -76,6 +76,13 @@ func DomID(domID string) func(*Config) {
 	}
 }
 
+// CustomCSS #swagger-ui.
+func CustomCSS(customCSS string) func(*Config) {
+	return func(c *Config) {
+		c.CustomCSS = customCSS
+	}
+}
+
 // InstanceName specified swag instance name.
 func InstanceName(instanceName string) func(*Config) {
 	return func(c *Config) {
