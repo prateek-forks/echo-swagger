@@ -1,4 +1,4 @@
-module github.com/swaggo/echo-swagger
+module github.com/prateek-forks/echo-swagger
 
 go 1.17
 
