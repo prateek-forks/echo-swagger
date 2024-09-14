@@ -236,7 +236,7 @@ func (s *mockedSwag) ReadDoc() string {
 func TestWrapHandler(t *testing.T) {
 	router := echo.New()
 
-	router.Any("/*", EchoWrapHandler(DocExpansion("none"), DomID("swagger-ui")))
+	router.Any("/*", EchoWrapHandler(DocExpansion("none"), CustomCSS("custom-css"), DomID("swagger-ui")))
 
 	w1 := performRequest(http.MethodGet, "/index.html", router)
 	assert.Equal(t, http.StatusOK, w1.Code)
@@ -386,6 +386,13 @@ func TestDocExpansion(t *testing.T) {
 	expected := "https://github.com/swaggo/docs"
 	DocExpansion(expected)(&cfg)
 	assert.Equal(t, expected, cfg.DocExpansion)
+}
+
+func TestCustomCSS(t *testing.T) {
+	var cfg Config
+	expected := "a"
+	CustomCSS(expected)(&cfg)
+	assert.Equal(t, expected, cfg.CustomCSS)
 }
 
 func TestDomID(t *testing.T) {

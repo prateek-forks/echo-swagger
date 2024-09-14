@@ -17,7 +17,7 @@ type Config struct {
 	// The url pointing to API definition (normally swagger.json or swagger.yaml). Default is `mockedSwag.json`.
 	URLs                 []string
 	DocExpansion         string
-	CustomCSS         string
+	CustomCSS            string
 	DomID                string
 	InstanceName         string
 	DeepLinking          bool
