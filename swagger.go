@@ -213,7 +213,7 @@ const indexTemplate = `<!-- HTML for static distribution bundle build -->
   <title>Swagger UI</title>
   <link rel="stylesheet" type="text/css" href="./swagger-ui.css" >
   {{ if .CustomCSS }}
-  <link rel="stylesheet" type="text/css" href="{{.CustomCSS}}.css" >
+  <link type="text/css" href="{{.CustomCSS}}.css" >
   {{ end }}
   <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
@@ -278,6 +278,9 @@ const indexTemplate = `<!-- HTML for static distribution bundle build -->
 
 <script src="./swagger-ui-bundle.js"> </script>
 <script src="./swagger-ui-standalone-preset.js"> </script>
+{{ if .CustomCSS }}
+<link rel="stylesheet" type="text/css" href="{{.CustomCSS}}.css" >
+{{ end }}
 <script>
 window.onload = function() {
   // Build a system
